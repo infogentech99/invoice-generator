@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')).render(
       Bill Info
     </a>
     <a
-      href="/billGenerate"
+      href="/Billing"
       className="text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-blue-100 transition"
     >
       Bill Generate

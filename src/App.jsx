@@ -7,7 +7,7 @@ import BillGenerate from "./component/BillGenerate";
 function App() {
   const appRouter = createBrowserRouter([
     {
-      path: "/billGenerate", 
+      path: "/Billing", 
       element: <BillGenerate />,
     },
     {
