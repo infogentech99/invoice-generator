@@ -22,7 +22,6 @@ const BillGenerate = () => {
         }
         const data = await response.json();
         setStatus(data);
-        console.log("Bill data" ,data);
 
       } catch (error) {
         setError(error);

@@ -27,7 +27,6 @@ const CustomerHistoryTable = () => {
                               type="checkbox"
                               checked={selectedBillIndex === index}
                               onChange={() => {
-                                console.log('Selected Bill:', row.billNumber);
                                 setSelectedBillIndex(index);
                                 setBillNumber(row.billNumber);
                               }}

@@ -14,7 +14,6 @@ const ClosingTable = ({ billNumber }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log("Closing Data:", data);
         setCustomerData(data);
       } catch (error) {
         setError(error.message);

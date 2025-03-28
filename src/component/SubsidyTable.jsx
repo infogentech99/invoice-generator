@@ -15,7 +15,6 @@ const SubsidyTable = () => {
           throw new Error("Network response was not ok");
         }
         const data = await demandResponse.json();
-        console.log("Subsidy Data:", data);
         setCustomerData(data);
       } catch (error) {
         setError(error);

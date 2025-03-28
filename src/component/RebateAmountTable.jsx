@@ -15,7 +15,6 @@ const RebateAmountTable = () => {
           throw new Error("Network response was not ok");
         }
         const data = await demandResponse.json();
-        console.log("Rebate Data: skbljfbsav", data);
         setCustomerData([data]);
       } catch (error) {
         setError(error);

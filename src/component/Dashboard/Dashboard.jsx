@@ -31,7 +31,6 @@ const Dashboard = () => {
       );
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
-      console.log('Customer History:', data);
       setHistory(data);
     } catch (err) {
       setError(err.message);
@@ -46,7 +45,6 @@ const Dashboard = () => {
 
       if (!response.ok) throw new Error('Failed to fetch customer data');
       const data = await response.json();
-      console.log('Customer Data:', data);
       setCustomerData(data[0]);
     } catch (err) {
       setError(err.message);

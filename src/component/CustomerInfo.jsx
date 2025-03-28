@@ -14,7 +14,6 @@ const CustomerInfo = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
         setCustomerData(data[0]);
       } catch (error) {
         setError(error);
