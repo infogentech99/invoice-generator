@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
-const ClosingTable = ({ billNumber }) => {
+const InterestTable = () => {
+  const { billNumber } = useOutletContext(); 
   const [customerData, setCustomerData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -8,13 +10,11 @@ const ClosingTable = ({ billNumber }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://customertransactionapi20250312083911-fvcvh5d8c5fdbths.centralus-01.azurewebsites.net/api/Reports/GetArrearDtls/${billNumber}`
+          `https://customertransactionapi20250312083911-fvcvh5d8c5fdbths.centralus-01.azurewebsites.net/api/Reports/GetInterestDtls/${billNumber}`
         );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
-        console.log("Closing Data:", data);
+        console.log("Demand Data:", data);
         setCustomerData(data);
       } catch (error) {
         setError(error.message);
@@ -26,15 +26,11 @@ const ClosingTable = ({ billNumber }) => {
   return (
     <>
       {customerData && customerData.length > 0 ? (
-        <div className="mt-6 bg-white shadow-lg rounded-lg">
-          <h2 className="text-2xl font-bold text-center py-4 bg-blue-500 text-white">
-            Closing Details
-          </h2>
+        <div className=" bg-white shadow-lg rounded-lg">
           <div className="w-full overflow-x-auto">
             <table className="w-full border border-gray-300 table-auto text-sm">
               <thead className="bg-gray-200">
                 <tr>
-
                   {Object.keys(customerData[0]).map((header) => (
                     <th key={header} className="p-3 border whitespace-nowrap">
                       {header}
@@ -57,12 +53,10 @@ const ClosingTable = ({ billNumber }) => {
           </div>
         </div>
       ) : (
-        <p className="text-center mt-4 text-gray-500">
-          No  data found for this bill.
-        </p>
+        <p className="text-center mt-4 text-gray-500">No  data found.</p>
       )}
     </>
   );
 };
 
-export default ClosingTable;
+export default InterestTable;

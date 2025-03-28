@@ -1,69 +1,66 @@
 import React, { useEffect, useState } from "react";
 
-const CollectionAmountTable = ({billNumber}) => {
-    const [customerData, setCustomerData] = useState(null);
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const demandResponse = await fetch(
-            `https://customertransactionapi20250312083911-fvcvh5d8c5fdbths.centralus-01.azurewebsites.net/api/Reports/GetCOllectionDetls/${billNumber}`
-          );
-          if (!demandResponse.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const data = await demandResponse.json();
-          console.log(data);
-          setCustomerData(data);
-        } catch (error) {
-          setError(error);
-        }
-      };
-      fetchData();
-    }, [billNumber]);
-  return (
-<>
-      {/* Responsive Table Container */}
-      {customerData && customerData.length > 0 ? (
-        <div className="flex overflow-x-auto mt-6">
-          <div className="bg-white shadow-lg rounded-lg p-8 min-w-full">
-          <h2 className="text-2xl font-bold mb-4">Collection Amount Details</h2>
+const CollectionAmountTable = ({ billNumber }) => {
+  const [customerData, setCustomerData] = useState(null);
+  const [error, setError] = useState(null);
 
-            <div className="overflow-x-auto">
-              <table className="min-w-full border-collapse border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-200 text-gray-700">
-                    <th className="border p-2 text-xs whitespace-nowrap">Bill Number</th>
-                    {Object.keys(customerData[0]).map((header) => (
-                      <th key={header} className="border p-2 text-xs whitespace-nowrap">
-                        {header}
-                      </th>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://customertransactionapi20250312083911-fvcvh5d8c5fdbths.centralus-01.azurewebsites.net/api/Reports/GetCOllectionDetls/${billNumber}`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log("Collection Amount Data:", data);
+        setCustomerData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchData();
+  }, [billNumber]);
+
+  return (
+    <>
+      {customerData && customerData.length > 0 ? (
+        <div className="mt-6 bg-white shadow-lg rounded-lg">
+          <h2 className="text-2xl font-bold text-center py-4 bg-blue-500 text-white">
+            Collection Amount Details
+          </h2>
+          <div className="w-full overflow-x-auto">
+            <table className="w-full border border-gray-300 table-auto text-sm">
+              <thead className="bg-gray-200">
+                <tr>
+                  {Object.keys(customerData[0]).map((header) => (
+                    <th key={header} className="p-3 border whitespace-nowrap">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {customerData.map((row, index) => (
+                  <tr key={index} className="odd:bg-gray-100 even:bg-white">
+                    {Object.keys(row).map((key) => (
+                      <td key={key} className="p-3 border whitespace-nowrap">
+                        {row[key] ?? "—"}
+                      </td>
                     ))}
                   </tr>
-                </thead>
-                <tbody>
-                  {customerData.map((row, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
-                      <td className="border px-4 py-2">{row.billNumber ?? "N/A"}</td>
-                      {Object.keys(row).map((key) => (
-                        <td
-                          key={key}
-                          className={`border px-4 py-2`}
-                        >
-                          {row[key] ?? "—"}
-                          
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       ) : (
-        <p className="text-center mt-4 text-gray-500">No bill customerData found.</p>
+        <p className="text-center mt-4 text-gray-500">
+          No collection amount data found.
+        </p>
       )}
-</>
+    </>
   );
 };
 

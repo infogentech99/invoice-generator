@@ -26,48 +26,47 @@ const PenaltyAmountTable = () => {
   ];
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6">
-      <h2 className="text-2xl font-bold mb-4">Penalty Amount Details</h2>
+    <>
+      {penaltyData && penaltyData.length > 0 ? (
+        <div className=" bg-white shadow-lg rounded-lg">
 
-      {/* Responsive Table Container */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-200 text-gray-700">
-              {[
-                "PenaltyTransID",
-                "PenaltyTypeID",
-                "PenaltyName",
-                "PenaltyDescription",
-                "ConnectionID",
-                "RRNO",
-                "TarrifTypeId",
-                "PenaltyAmount",
-              ].map((header) => (
-                <th key={header} className="border p-2 text-xs whitespace-nowrap">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {penaltyData.map((row, index) => (
-              <tr key={index} className="border">
-                {Object.entries(row).map(([key, value]) => (
-                  <td key={key} className="border p-2 text-xs whitespace-nowrap">
-                    {typeof value === "string" && value.startsWith("PEN") ? (
-                      <button className="text-blue-500 underline">{value}</button>
-                    ) : (
-                      value
-                    )}
-                  </td>
+          <div className="w-full overflow-x-auto">
+            <table className="w-full border border-gray-300 table-auto text-sm">
+              <thead className="bg-gray-200">
+                <tr>
+                  {Object.keys(penaltyData[0]).map((header) => (
+                    <th key={header} className="p-3 border whitespace-nowrap">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {penaltyData.map((row, index) => (
+                  <tr key={index} className="odd:bg-gray-100 even:bg-white">
+                    {Object.entries(row).map(([key, value]) => (
+                      <td key={key} className="p-3 border whitespace-nowrap">
+                        {typeof value === "string" && value.startsWith("PEN") ? (
+                          <button className="text-blue-500 hover:underline">
+                            {value}
+                          </button>
+                        ) : (
+                          value
+                        )}
+                      </td>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <p className="text-center mt-4 text-gray-500">
+          No penalty data available.
+        </p>
+      )}
+    </>
   );
 };
 

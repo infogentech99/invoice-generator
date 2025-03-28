@@ -5,18 +5,17 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className="flex justify-center items-center gap-6 bg-white  p-4 ">
-    <a
-      href="/"
-      className="text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-blue-100 transition"
+    <div className="flex justify-between items-center gap-6 bg-blue-200 p-4 ">
+    <div
+      className="ml-4 lg:text-xl font-bold px-4 py-2 rounded-md  hover:bg-blue-100 transition"
     >
-      Bill Info
-    </a>
+      HECOM TOTAL REVENUE MANGEMENT SYSTEM
+    </div>
     <a
-      href="/Billing"
-      className="text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-blue-100 transition"
+      href="/admin-dashboard"
+      className=" font-semibold px-4 py-2 rounded-md hover:bg-blue-100 transition"
     >
-      Bill Generate
+      Admin Panel
     </a>
   </div>
     <App />

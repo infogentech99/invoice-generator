@@ -1,0 +1,460 @@
+import React, { useRef, useState } from "react";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
+const Bill = () => {
+  const billRef = useRef();
+
+  const downloadPDF = async () => {
+    const element = billRef.current;
+    const canvas = await html2canvas(element, {
+      scale: 3,
+      useCORS: true,
+    });
+    const imgData = canvas.toDataURL("image/jpeg", 1.0);
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const pdfWidth = 210; // A4 width in mm
+    const margin = 10;
+    const imgWidth = pdfWidth - margin * 2;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, "JPEG", margin, margin, imgWidth, imgHeight);
+    pdf.save(`Electricity_Bill_${bill.billNumber}.pdf`);
+  };
+
+  const openPDFInNewTab = async () => {
+    const element = billRef.current;
+    const canvas = await html2canvas(element, {
+      scale: 3,
+      useCORS: true,
+    });
+    const imgData = canvas.toDataURL("image/jpeg", 1.0);
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const pdfWidth = 210;
+    const margin = 10;
+    const imgWidth = pdfWidth - margin * 2;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, "JPEG", margin, margin, imgWidth, imgHeight);
+    const blob = pdf.output("blob");
+    const url = URL.createObjectURL(blob);
+    window.open(url, "_blank");
+  };
+  
+const bill ={
+    "rrno": "NGR46400",
+    "customerName": "A V Gundappa",
+    "connectionID": "534135",
+    "sanctionedLoadKW": 100,
+    "tarrifTypeId": "LT-1",
+    "billNumber": "254875165565",
+    "billDate": "2025-03-28T09:36:18.3486834Z",
+    "dueDate": "2025-03-28T09:36:18.3486837Z",
+    "prevReading": 100,
+    "presReading": 100,
+    "recordedMDConsumption": 100,
+    "subsidyEligibleUntis": 100,
+    "mdConsumption": 100,
+    "meterConstant": 100,
+    "fcSlab1": 100,
+    "fcSlab2": 100,
+    "energyCharge": 100,
+    "fac": 100,
+    "tax": 100,
+    "pfPenalty": 100,
+    "mdPenalty": 100,
+    "cgst": 100,
+    "sgst": 100,
+    "submetereEnergyCharge": 100,
+    "roundOff": 100,
+    "dandRFees": 100,
+    "miscChargesOrTaxShortClaim": 100,
+    "creditOrAdjustments": 100,
+    "auditShortClaim": 100,
+    "rebate": 100,
+    "shortClaim": 100,
+    "discount": 100,
+    "promptPayment": 100,
+    "subsidyFCSlab1": 100,
+    "subsidyFCSlab2": 100,
+    "subsidyEnergyCharge": 100,
+    "subsidyFAC": 100,
+    "subsidyTax": 100,
+    "totalSubsidy": 100,
+    "totalDemand": 100,
+    "revnueArrears": 100,
+    "taxInterest": 100,
+    "revenueInterest": 100,
+    "revenueOB": 100,
+    "taxOB": 100,
+    "interestOB": 100,
+    "arrearsTotal": 100,
+    "netPaybleByConsumer": 100,
+    "fcCharges": 100,
+    "mdMeterPrevReading": 100,
+    "mdMeterReading": 100,
+    "mdMeterDifference": 100,
+    "kwhMeterPrevReading": 100,
+    "kwhMetereading": 100,
+    "kwhConsuption": 100,
+    "kwHeterDifference": 100,
+    "kvaMeterPrevReading": 100,
+    "kvaMeterReading": 100,
+    "kvaConsuption": 100,
+    "mdConsuptionSlab1": 100,
+    "mdConsuptionSlab2": 100,
+    "kvaMeterDifference": 100,
+    "subMDConsuptionSlab1": 100,
+    "subMDConsuptionSlab2": 100,
+    "fcSlab1Price": 100,
+    "fcSlab2Price": 100,
+    "subFCSlab1Price": 100,
+    "subFCSlab2Price": 100,
+    "ecPrice": 100,
+    "facPrice": 100,
+    "taxPrice": 100,
+    "subEcPrice": 100,
+    "subFACPrice": 100,
+    "subTaxPrice": 100,
+    "subFCSlab1": 100,
+    "subFCSlab2": 100,
+    "subEnergyCharge": 100,
+    "subFAC": 100,
+    "subTax": 100,
+    "netTODCharges": 100,
+    "drFees": 100,
+    "miscCharges": 100,
+    "cads": 100,
+    "asc": 100,
+    "othersTotal": 100,
+    "billAmount1": 100,
+    "taxArrear": 100,
+    "totalArrear": 100,
+    "totalBillAmount": 100,
+    "netAmountPayble": 100
+  } 
+
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4 
+    ">
+    <div className="max-w-5xl w-full bg-white rounded shadow-lg p-6">
+    <div className="flex gap-4 mb-4">
+          <button onClick={downloadPDF} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Download PDF
+          </button>
+          <button onClick={openPDFInNewTab} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+            Open in New Tab
+          </button>
+        </div>
+
+        <div ref={billRef} className="text-sm bg-white p- w-full max-w-3xl mx-auto">
+        <h1 className="text-xl font-bold text-center mb-2">HECOM TOTAL REVENUE MANGEMENT SYSTEM</h1>
+        <p className="text-center mb-4">Office Of The Assistant Executive Engineer (Ele..),C(O&M), Subdivision: {bill.subdivisionOfficeName ?? 'N/A'}</p>
+
+        <div className="grid grid-cols-3 gap-2 mb-2">
+            <div>
+            <p><strong>Name: </strong> {bill.customerName}</p>
+            <p><strong>Address: </strong>{bill.address1 ?? 'N/A'}</p>
+            </div>
+            <div>
+            <p><strong>RR No:</strong> {bill.rrno}</p>
+          <p><strong>Connection ID:</strong> {bill.connectionID}</p>
+          <p><strong>Tariff:</strong> {bill.tarrifTypeId}</p>
+          <p><strong>Bill No:</strong> {bill.billNumber}</p>
+            </div>
+            <div>
+          <p><strong>Billing Period:</strong> {bill.billDate.split("T")[0]} to {bill.dueDate.split("T")[0]}</p>
+          <p><strong>Bill Date:</strong> {bill.billDate.split("T")[0]}</p>
+          <p><strong>Due Date:</strong> {bill.dueDate.split("T")[0]}</p>
+
+            </div>
+        </div>
+
+        <hr className="my-2" />
+
+        {/* Meter Reading Details */}
+        <table className="table-auto w-full text-sm border border-black">
+  <thead>
+    <tr>
+      <th colSpan="4" className="border border-black text-center font-semibold p-1">
+       Meter Reading Details
+      </th>
+    </tr>
+    <tr>
+      <th className="border border-black p-1">Details</th>
+      <th className="border border-black p-1">MJ Meter</th>
+      <th className="border border-black p-1">KWH Meter</th>
+      <th className="border border-black p-1">KVAH</th>
+      <th className="border border-black p-1">PF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-black p-1">Present Reading : BillDate</td>
+      <td className="border border-black p-1">{bill.mdMeterReading}</td>
+      <td className="border border-black p-1"> {bill.kwhMetereading} </td>
+      <td className="border border-black p-1">{bill.kvaMeterReading}</td>
+      <td className="border border-black p-1">{bill.PFLag ?? 'N/A'}</td> 
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Previous Reading : PrevBillDate</td>
+      <td className="border border-black p-1">{bill.mdMeterPrevReading}</td>
+      <td className="border border-black p-1">{bill.kwhMeterPrevReading}</td>
+      <td className="border border-black p-1">{bill.kvaMeterPrevReading}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Difference</td>
+      <td className="border border-black p-1">{bill.mdMeterDifference}</td>
+      <td className="border border-black p-1">{bill.kwHeterDifference}</td>
+      <td className="border border-black p-1">{bill.kvaMeterDifference}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Meter Constant</td>
+      <td className="border border-black p-1">{bill.meterConstant}</td>
+      <td className="border border-black p-1">{bill.meterConstant}</td>
+      <td className="border border-black p-1"></td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Consumption</td>
+      <td className="border border-black p-1">{bill.mdConsumption}</td>
+      <td className="border border-black p-1">{bill.kwhConsuption}</td>
+      <td className="border border-black p-1">{bill.kvaConsuption}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div className="grid grid-cols-2 gap-2 ">
+  {/* Row 1, Col 1 */}
+  <div className="">
+    {/* Present Month Billing  */}
+<table className="table-auto w-full text-sm border border-black my-2">
+  <thead>
+    <tr>
+      <th colSpan="4" className="border border-black text-center font-semibold p-1">
+       Present Month Billing
+      </th>
+    </tr>
+    <tr>
+      <th className="border border-black p-1">Details</th>
+      <th className="border border-black p-1">Units</th>
+      <th className="border border-black p-1">Rate</th>
+      <th className="border border-black p-1">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-black p-1">Fc Slab 1</td>
+      <td className="border border-black p-1">{bill.mdConsuptionSlab1}</td>
+      <td className="border border-black p-1">{bill.fcSlab1Price}</td>
+      <td className="border border-black p-1">{bill.fcSlab2Price}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">FC slab 2</td>
+      <td className="border border-black p-1">{bill.mdConsuptionSlab2} </td>
+      <td className="border border-black p-1">{bill.fcSlab2Price}</td>
+      <td className="border border-black p-1">{bill.fcSlab2}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Energy Charge</td>
+      <td className="border border-black p-1">{bill.energyCharge}</td>
+      <td className="border border-black p-1">{bill.ecPrice}</td>
+      <td className="border border-black p-1">{bill.energyCharge}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">FAC</td>
+      <td className="border border-black p-1">{bill.fac}</td>
+      <td className="border border-black p-1">{bill.facPrice}</td>
+      <td className="border border-black p-1">{bill.fac}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Tax (9% EC)</td>
+      <td className="border border-black p-1">{bill.tax}</td>
+      <td className="border border-black p-1">{bill.taxPrice}</td>
+      <td className="border border-black p-1">{bill.tax}</td>
+    </tr>
+    <tr>
+      <td colSpan="3" className="border border-black p-1"></td>
+      <td className="border border-black p-1">Total = {bill.fcSlab2Price + bill.fcSlab2 + bill.energyCharge + bill.fac + bill.tax}</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  {/* Col 2 spanning 2 rows */}
+  <div className="row-span-2  ">
+    {/* Additional Charge  */}
+<table className="table-auto w-full text-sm border border-black my-2 ">
+  <thead>
+    <tr>
+      <th colSpan="2" className="border border-black text-center font-semibold p-1">
+        Additional Charge
+      </th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr>
+      <td className="border border-black p-1 font-semibold">PF penalty</td>
+      <td className="border border-black p-1">{bill.pfPenalty}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">MJ penalty</td>
+      <td className="border border-black p-1">{bill.mdPenalty}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">CGST</td>
+      <td className="border border-black p-1">{bill.cgst}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">SGST</td>
+      <td className="border border-black p-1">{bill.sgst}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">SubMeter EC</td>
+      <td className="border border-black p-1">{bill.submetereEnergyCharge}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Net TOD Charges</td>
+      <td className="border border-black p-1">{bill.netTODCharges}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">D & R Fees</td>
+      <td className="border border-black p-1">{bill.drFees}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Misc Charges / Tax Short Claim</td>
+      <td className="border border-black p-1">{bill.miscCharges}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Credit / Adjustment</td>
+      <td className="border border-black p-1">{bill.cads}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Aadit Short Claim</td>
+      <td className="border border-black p-1">{bill.asc}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Rebate / Discount / Prompt Payment</td>
+      <td className="border border-black p-1">{bill.rebate}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Total</td>
+      <td className="border border-black p-1">{bill.othersTotal}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Round Off</td>
+      <td className="border border-black p-1">{bill.roundOff}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1 font-semibold">Bill Amount</td>
+      <td className="border border-black p-1">{bill.billAmount1}</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  {/* Row 2, Col 1 */}
+  <div className="">
+    
+{/* Graha Jyoti Subsidy */}
+
+<table className="table-auto w-full text-sm border border-black">
+  <thead>
+    <tr>
+      <th colSpan="4" className="border border-black text-center font-semibold p-1">
+      Graha Jyoti Subsidy
+      </th>
+    </tr>
+    <tr>
+      <th className="border border-black p-1">Details</th>
+      <th className="border border-black p-1">Units</th>
+      <th className="border border-black p-1">Rate</th>
+      <th className="border border-black p-1">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-black p-1">Fc Slab 1</td>
+      <td className="border border-black p-1">{bill.subMDConsuptionSlab1}</td>
+      <td className="border border-black p-1">{bill.subFCSlab1}</td>
+      <td className="border border-black p-1">{bill.subFCSlab1}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">FC slab 2</td>
+      <td className="border border-black p-1">{bill.subMDConsuptionSlab2} </td>
+      <td className="border border-black p-1">{bill.subFCSlab2Price}</td>
+      <td className="border border-black p-1">{bill.subFCSlab2}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Energy Charge</td>
+      <td className="border border-black p-1">{bill.subEnergyCharge}</td>
+      <td className="border border-black p-1">{bill.subEcPrice}</td>
+      <td className="border border-black p-1">{bill.subEnergyCharge}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">FAC</td>
+      <td className="border border-black p-1">{bill.subFAC}</td>
+      <td className="border border-black p-1">{bill.subFACPrice}</td>
+      <td className="border border-black p-1">{bill.subFAC}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Tax (9% EC)</td>
+      <td className="border border-black p-1">{bill.subTax}</td>
+      <td className="border border-black p-1">{bill.subTaxPrice}</td>
+      <td className="border border-black p-1">{bill.subTax}</td>
+    </tr>
+    <tr>
+      <td colSpan="3" className="border border-black p-1"></td>
+      <td className="border border-black p-1">SubTotal = {bill.subFCSlab1 + bill.subFCSlab2 + bill.subEnergyCharge + bill.subFAC + bill.subTax}</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+
+
+
+
+
+{/* Details of Arrears  */}
+
+<table className="table-auto w-full text-sm border border-black my-2">
+  <thead>
+    <tr>
+      <th colSpan="14" className="border border-black text-center font-semibold p-1">
+      Details of Arrears 
+      </th>
+    </tr>
+    <tr>
+      <th className="border border-black p-1">Revenue</th>
+      <th className="border border-black p-1">Tax</th>
+      <th className="border border-black p-1">Interest on Revenue</th>
+      <th className="border border-black p-1">Interest on Tax</th>
+      <th className="border border-black p-1">Total Arrears</th>
+      <th className="border border-black p-1">Total Bill Amount</th>
+      <th className="border border-black p-1">Net Amount Payable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-black p-1">{bill.revnueArrears}</td>
+      <td className="border border-black p-1">{bill.taxArrear}</td>
+      <td className="border border-black p-1">{bill.revenueInterest}</td>
+      <td className="border border-black p-1">{bill.taxInterest}</td>
+      <td className="border border-black p-1">{bill.totalArrear}</td>
+      <td className="border border-black p-1">{bill.totalBillAmount}</td>
+      <td className="border border-black p-1">{bill.netAmountPayble}</td>
+
+
+    </tr>
+  </tbody>
+</table> 
+
+      </div>
+    </div>
+  </div>
+  );
+};
+
+export default Bill;
