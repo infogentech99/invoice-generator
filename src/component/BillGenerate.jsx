@@ -11,71 +11,7 @@ const BillGenerate = () => {
     pfLag : Number
   });
   const [status, setStatus] =useState(null);
-  const [bill, setbill] = useState({
-    rrno: "DN999",
-    connectionID: "28180826",
-    tarrifTypeId: "LT1",
-    billNumber: "202411281510592001",
-    billDate: "2024-11-28",
-    dueDate: "2024-12-17",
-    disconnectionDate: "2024-12-27",
-    name: "K Y KULAKARNI",
-    address: "SODWAD, SODWAD",
-    sanctionedLoad: 0.36,
-    loadType: "KW/HP/MD",
-    recordedMD: 0.1,
-    status: "Connected",
-    gyDate: "2023-07-04",
-    gyAvg: 69,
-    gyEntitlement: 76,
-    readingDate: "2024-11-01",
-    prevReading: 0,
-    presReading: 4254,
-    mdReading: 0.1,
-    kwhReading: 416,
-    kvahReading: 0,
-    pf: 0.85,
-    difference: 0,
-    meterConstant: 1,
-    consumption: 93,
-    energyCharges: 93,
-    facUnits: 93,
-    subsidyUnits: 17,
-    chargeableUnits: 76,
-    slab1Units: 0.36,
-    slab1Rate: 120,
-    slab1Amount: 120,
-    slab2Units: 0,
-    slab2Rate: 210,
-    slab2Amount: 0,
-    energyRate: 5.9,
-    energyAmount: 548.57,
-    ruralRebate: 0,
-    sgst: 0,
-    fixedChargeUnits: 93,
-    fixedChargeRate: 0.09,
-    fixedChargeAmount: 8.37,
-    netTODCharges: 49.33,
-    mdPenalty: 0,
-    pfPenalty: 0,
-    solarRebate: 0,
-    otherPenalty: 0,
-    roundOff: -0.09,
-    totalAmount: 726.45,
-    bsrFees: 0,
-    miscCharges: 0,
-    creditAdjustment: 0,
-    auditShortClaim: 0,
-    rebate: 0,
-    discount: 0,
-    promptPayment: 0,
-    totalOthers: 0,
-    gyUnits: 76,
-    gyRate: 0.64,
-    gyAmount: 48.64,
-    totalBillAmount: 111,
-    energyChargesSubsidy: 40.36
-  });
+  const [bill, setbill] = useState(null);
 
  useEffect(() => {
     const fetchData = async () => {
@@ -106,7 +42,7 @@ const BillGenerate = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch("http://localhost:4000/Billing", {
+      const response = await fetch("https://customertransactionapi20250312083911-fvcvh5d8c5fdbths.centralus-01.azurewebsites.net/api/Billing", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
