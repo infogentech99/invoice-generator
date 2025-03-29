@@ -25,13 +25,10 @@ const CollectionAmountTable = ({ billNumber }) => {
   return (
     <>
       {customerData && customerData.length > 0 ? (
-        <div className="mt-6 bg-white shadow-lg rounded-lg">
-          <h2 className="text-2xl font-bold text-center py-4 bg-blue-500 text-white">
-            Collection Amount Details
-          </h2>
+        <div className="mt-6 bg-blue-100 shadow-lg rounded-lg">
           <div className="w-full overflow-x-auto">
             <table className="w-full border border-gray-300 table-auto text-sm">
-              <thead className="bg-gray-200">
+              <thead className="bg-blue-100">
                 <tr>
                   {Object.keys(customerData[0]).map((header) => (
                     <th key={header} className="p-3 border whitespace-nowrap">
@@ -42,7 +39,7 @@ const CollectionAmountTable = ({ billNumber }) => {
               </thead>
               <tbody>
                 {customerData.map((row, index) => (
-                  <tr key={index} className="odd:bg-gray-100 even:bg-white">
+                  <tr key={index} className="odd:bg-blue-100 even:bg-blue-100">
                     {Object.keys(row).map((key) => (
                       <td key={key} className="p-3 border whitespace-nowrap">
                         {row[key] ?? "—"}

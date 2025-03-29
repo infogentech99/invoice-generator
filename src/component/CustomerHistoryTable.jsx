@@ -4,10 +4,10 @@ const CustomerHistoryTable = () => {
   return (
     <>
     {history && history.length > 0 && (
-            <div className=" bg-white shadow-lg rounded-lg">
+            <div className=" bg-blue-100 shadow-lg rounded-lg">
               <div className="w-full overflow-x-auto">
                 <table className="w-full border border-gray-300 table-auto text-sm">
-                  <thead className="bg-gray-200">
+                  <thead className="bg-blue-100">
                     <tr>
                     <th className="p-3 border">Select</th>
                       {Object.keys(history[0]).map((header) => (
@@ -19,7 +19,7 @@ const CustomerHistoryTable = () => {
                   </thead>
                   <tbody>
                     {history.map((row, index) => (
-                      <tr key={index} className="odd:bg-gray-100 even:bg-white">
+                      <tr key={index} className="odd:bg-blue-100 even:bg-blue-100">
                                         <td className="p-3 border text-center"
                                         key={row.billNumber}
                                         >

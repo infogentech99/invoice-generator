@@ -31,7 +31,7 @@ const CustomerInfo = () => {
     <>
    <div className="flex w-full h-screen ">
   {customerData ? (
-    <div className="bg-white  p-8 w-full ">
+    <div className="bg-blue-100  p-8 w-full ">
       <h2 className="text-2xl font-bold text-center mb-4">Customer Information</h2>
       <p className="text-lg text-center"><strong>Name:</strong> {customerData.applicantName ? customerData.applicantName : 'Customer Name'}</p>
       <p className="text-lg text-center"><strong>Tariff Type ID:</strong> {customerData.tarrifTypeId ? customerData.tarrifTypeId : 'No'}</p>

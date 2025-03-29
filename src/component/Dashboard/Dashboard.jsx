@@ -101,7 +101,7 @@ const Dashboard = () => {
         {/* Cards */}
         <div className="flex flex-wrap gap-4 mb-6">
         {Model && customerData && (
-            <div className="bg-blue-100 text-gray-900 p-4 rounded-md w-full sm:w-[300px]">
+            <div className="bg-[#2a4056] text-white p-4 rounded-md w-full sm:w-[300px]">
               <h1 className="text-xl font-bold mb-2">Personal information</h1>
               <div>Customer Name: {customerData.customerName || 'N/A' }</div>
               <div>Address: {customerData.addressLine1 || 'N/A'}</div>
@@ -109,7 +109,7 @@ const Dashboard = () => {
             </div>
           )}
           {Model && customerData && (
-            <div className="bg-blue-100 text-gray-900 p-4 rounded-md w-full sm:w-[300px]">
+            <div className="bg-[#2a4056] text-white p-4 rounded-md w-full sm:w-[300px]">
               <h1 className="text-xl font-bold mb-2">Meter Details</h1>
               <div>Meter Constant: {customerData.meterConstant}</div>
               <div>Sanction Load (KW): {customerData.sanctionedLoadKW}</div>
@@ -119,8 +119,8 @@ const Dashboard = () => {
           )}
 
           {Model && customerData && (
-            <div className="bg-blue-100 text-gray-900 p-4 rounded-md w-full sm:w-[300px]">
-              <h1 className="text-xl font-bold mb-2">miscellaneous</h1>
+            <div className="bg-[#2a4056] text-white p-4 rounded-md w-full sm:w-[300px]">
+              <h1 className="text-xl font-bold mb-2">Miscellaneous</h1>
               <div>Service Date: {customerData.serviceDate}</div>
               <div>Reading date: {customerData.readingDate}</div>
               <div>Due Date: {customerData.dueDate}</div>
@@ -128,7 +128,7 @@ const Dashboard = () => {
           )}
 
           {Model && customerData && (
-            <div className="bg-blue-100 text-gray-900 p-4 rounded-md w-full sm:w-[300px]">
+            <div className="bg-[#2a4056] text-white p-4 rounded-md w-full sm:w-[300px]">
               <h1 className="text-xl font-bold mb-2">Other</h1>
               <div>LF No : {customerData.lfNo}</div>
               <div>Installation Type: {customerData.installationtype ?? 'N/A'}</div>
@@ -139,16 +139,16 @@ const Dashboard = () => {
         {/* Bill Table */}
 
 {Model &&  <div >
-<div className="flex bg-blue-500 rounded-md flex-wrap gap-2 p-1">
-<NavLink to="Custome-History"  className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1')} >Customer History</NavLink>
-<NavLink to="Demand" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Demand</NavLink>
-<NavLink to="rebate"  className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')} >Rebate Amount</NavLink>
-<NavLink to="Subsidy" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Subsidy</NavLink>
-<NavLink to="Revenue" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Revenue</NavLink>
-<NavLink to="Interest" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Interest</NavLink>
-<NavLink to="GOK-Balanace" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>GOK Balanace</NavLink>
-<NavLink to="Consumption" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Consumption</NavLink>
-<NavLink to="Collection" className={({ isActive }) => (isActive ? '  bg-blue-600 rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Collection</NavLink>
+<div className="flex bg-blue-100 rounded-md flex-wrap gap-2 p-1">
+<NavLink to="Custome-History"  className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1')} >Customer History</NavLink>
+<NavLink to="Demand" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Demand</NavLink>
+<NavLink to="rebate"  className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')} >Rebate Amount</NavLink>
+<NavLink to="Subsidy" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Subsidy</NavLink>
+<NavLink to="Revenue" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Revenue</NavLink>
+<NavLink to="Interest" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Interest</NavLink>
+<NavLink to="GOK-Balanace" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>GOK Balanace</NavLink>
+<NavLink to="Consumption" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Consumption</NavLink>
+<NavLink to="Collection" className={({ isActive }) => (isActive ? '  bg-[#154c69] rounded-md  py-1.5 px-1.5  ' : ' py-1 px-1 ')}>Collection</NavLink>
 </div>
 <div>
 <Outlet context={{ history,billNumber,selectedBillIndex,setBillNumber,setSelectedBillIndex  }} />

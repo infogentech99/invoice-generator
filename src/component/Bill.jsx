@@ -57,7 +57,8 @@ const Bill = ({bill}) => {
         </div>
 
         <div ref={billRef} className="text-sm bg-white p- w-full max-w-3xl mx-auto">
-        <h1 className="text-xl font-bold text-center mb-2">HECOM TOTAL REVENUE MANGEMENT SYSTEM</h1>
+        <h1 className="text-xl font-bold text-center mb-2">Hubli Electricity Supply Company (HESCOM)</h1>
+        <p className="text-center ">(Wholly owned Government of Karnataka Undertaking) GSTIN No-29AABCH3176JEZZ</p>
         <p className="text-center mb-4">Office Of The Assistant Executive Engineer (Ele..),C(O&M), Subdivision: {bill.subdivisionOfficeName ?? 'N/A'}</p>
 
         <div className="grid grid-cols-3 gap-2 mb-2">
@@ -72,7 +73,7 @@ const Bill = ({bill}) => {
           <p><strong>Bill No:</strong> {bill.billNumber}</p>
             </div>
             <div>
-          <p><strong>Billing Period:</strong> {bill.billDate.split("T")[0]} to {bill.dueDate.split("T")[0]}</p>
+          <p className="text-nowrap"><strong>Billing Period:</strong> {bill.billDate.split("T")[0]} to {bill.dueDate.split("T")[0]}</p>
           <p><strong>Bill Date:</strong> {bill.billDate.split("T")[0]}</p>
           <p><strong>Due Date:</strong> {bill.dueDate.split("T")[0]}</p>
 
@@ -91,7 +92,7 @@ const Bill = ({bill}) => {
     </tr>
     <tr>
       <th className="border border-black p-1">Details</th>
-      <th className="border border-black p-1">MJ Meter</th>
+      <th className="border border-black p-1">MD Meter</th>
       <th className="border border-black p-1">KWH Meter</th>
       <th className="border border-black p-1">KVAH</th>
       <th className="border border-black p-1">PF</th>
@@ -99,14 +100,14 @@ const Bill = ({bill}) => {
   </thead>
   <tbody>
     <tr>
-      <td className="border border-black p-1">Present Reading : BillDate</td>
+      <td className="border border-black p-1">Present Reading : {bill.billDate.split("T")[0]}</td>
       <td className="border border-black p-1">{bill.mdMeterReading}</td>
       <td className="border border-black p-1"> {bill.kwhMetereading} </td>
       <td className="border border-black p-1">{bill.kvaMeterReading}</td>
       <td className="border border-black p-1">{bill.PFLag ?? 'N/A'}</td> 
     </tr>
     <tr>
-      <td className="border border-black p-1">Previous Reading : PrevBillDate</td>
+      <td className="border border-black p-1">Previous Reading : {bill.prevbilldate ? bill.prevbilldate.split("T")[0] : 'N/A'}</td>
       <td className="border border-black p-1">{bill.mdMeterPrevReading}</td>
       <td className="border border-black p-1">{bill.kwhMeterPrevReading}</td>
       <td className="border border-black p-1">{bill.kvaMeterPrevReading}</td>
@@ -128,6 +129,20 @@ const Bill = ({bill}) => {
       <td className="border border-black p-1">{bill.mdConsumption}</td>
       <td className="border border-black p-1">{bill.kwhConsuption}</td>
       <td className="border border-black p-1">{bill.kvaConsuption}</td>
+    </tr>
+    <tr>
+      <td className="border border-black p-1">Total Billed Units</td>
+      <td className="border border-black p-1">{bill.mdConsumption}</td>
+      <td className="border border-black p-1">{bill.kwhConsuption}</td>
+      <td className="border border-black p-1"></td>
+
+    </tr>
+    <tr>
+      <td className="border border-black p-1">GJ subsidy Units</td>
+      <td className="border border-black p-1">{bill.mdConsumption}</td>
+      <td className="border border-black p-1">{bill.kwhConsuption}</td>
+      <td className="border border-black p-1"></td>
+
     </tr>
   </tbody>
 </table>
@@ -206,7 +221,7 @@ const Bill = ({bill}) => {
       <td className="border border-black p-1">{bill.pfPenalty}</td>
     </tr>
     <tr>
-      <td className="border border-black p-1 font-semibold">MJ penalty</td>
+      <td className="border border-black p-1 font-semibold">MD penalty</td>
       <td className="border border-black p-1">{bill.mdPenalty}</td>
     </tr>
     <tr>
@@ -254,8 +269,8 @@ const Bill = ({bill}) => {
       <td className="border border-black p-1">{bill.roundOff}</td>
     </tr>
     <tr>
-      <td className="border border-black p-1 font-semibold">Bill Amount</td>
-      <td className="border border-black p-1">{bill.billAmount1}</td>
+      <td className="border border-black p-1 font-semibold  ">Bill Amount</td>
+      <td className="border border-black p-1 ">{bill.billAmount1}</td>
     </tr>
   </tbody>
 </table>

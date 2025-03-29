@@ -11,7 +11,7 @@ const BillGenerate = () => {
     pfLag : Number
   });
   const [status, setStatus] =useState(null);
-  const [bill, setbill] = useState(null);
+  const [bill, setbill] = useState({"rrno":"NGR46400","customerName":"A V Gundappa","connectionID":"534135","sanctionedLoadKW":100,"tarrifTypeId":"LT-1","billNumber":"254875165565","billDate":"2025-03-29T05:05:42.9495746Z","dueDate":"2025-03-29T05:05:42.9496009Z","prevReading":100,"presReading":100,"recordedMDConsumption":100,"subsidyEligibleUntis":100,"mdConsumption":100,"meterConstant":100,"fcSlab1":100,"fcSlab2":100,"energyCharge":100,"fac":100,"tax":100,"pfPenalty":100,"mdPenalty":100,"cgst":100,"sgst":100,"submetereEnergyCharge":100,"roundOff":100,"dandRFees":100,"miscChargesOrTaxShortClaim":100,"creditOrAdjustments":100,"auditShortClaim":100,"rebate":100,"shortClaim":100,"discount":100,"promptPayment":100,"subsidyFCSlab1":100,"subsidyFCSlab2":100,"subsidyEnergyCharge":100,"subsidyFAC":100,"subsidyTax":100,"totalSubsidy":100,"totalDemand":100,"revnueArrears":100,"taxInterest":100,"revenueInterest":100,"revenueOB":100,"taxOB":100,"interestOB":100,"arrearsTotal":100,"netPaybleByConsumer":100,"fcCharges":100,"mdMeterPrevReading":100,"mdMeterReading":100,"mdMeterDifference":100,"kwhMeterPrevReading":100,"kwhMetereading":100,"kwhConsuption":100,"kwHeterDifference":100,"kvaMeterPrevReading":100,"kvaMeterReading":100,"kvaConsuption":100,"mdConsuptionSlab1":100,"mdConsuptionSlab2":100,"kvaMeterDifference":100,"subMDConsuptionSlab1":100,"subMDConsuptionSlab2":100,"fcSlab1Price":100,"fcSlab2Price":100,"subFCSlab1Price":100,"subFCSlab2Price":100,"ecPrice":100,"facPrice":100,"taxPrice":100,"subEcPrice":100,"subFACPrice":100,"subTaxPrice":100,"subFCSlab1":100,"subFCSlab2":100,"subEnergyCharge":100,"subFAC":100,"subTax":100,"netTODCharges":100,"drFees":100,"miscCharges":100,"cads":100,"asc":100,"othersTotal":100,"billAmount1":100,"taxArrear":100,"totalArrear":100,"totalBillAmount":100,"netAmountPayble":100});
 
  useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +64,7 @@ const BillGenerate = () => {
   
 
   return (
-    <div className=" justify-center items-center min-h-screen bg-gray-100 p-4">
+    <div className="  min-h-screen bg-gray-100 p-4">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-6xl w-full">
         {/* Meter Reading Form Section */}
         <div className="bg-white shadow-lg rounded-lg p-8">
