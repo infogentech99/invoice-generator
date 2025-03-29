@@ -55,7 +55,7 @@ const Dashboard = () => {
     GetCustomerHistory();
     CusData();
     setModel(true);
-    navigate('Custome-History');
+    navigate('/admin-dashboard/Custome-History');
   };
 
   const linkableColumns = {

@@ -6,7 +6,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const [openItem, setOpenItem] = useState(null);
 
   const navItems = [
-    { title: 'dashboard', path: '/admin-dashboard' },
+    { title: 'Dashboard', path: '/admin-dashboard' },
     {
       title: 'Billing',
       children: [{ title: 'Back Office Billing', path: '/Billing/backoffice' }],
